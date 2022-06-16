@@ -1,10 +1,12 @@
+import {useEffect} from 'react'    
 import { useDispatch, useSelector } from 'react-redux'
-import OrderListItem from './OrderListItem/OrderListItem'
+import OrderListItem from '../OrderListItem/OrderListItem'
+import axios from 'axios'
 
 function OrderList() {
     const dispatch = useDispatch();
     useEffect(() => {
-        axios.get('/order')
+        axios.get('/api/order')
         .then((response) => {
             console.log('get orders success', response.data);
             dispatch({
