@@ -18,6 +18,7 @@ const orderList = (state = [], action) => {
         case 'GET_ORDER_LIST':
             return action.payload
     }
+    return state;
 }
 
 // this will pop up on the home page as a list of items with buttons on them
@@ -26,6 +27,7 @@ const pizzaList = (state = [], action) => {
         case 'GET_PIZZA_LIST':
             return action.payload
     }
+    return state;
 }
 
 const storeInstance = createStore(
