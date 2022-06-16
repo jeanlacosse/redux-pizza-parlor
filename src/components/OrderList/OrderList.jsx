@@ -3,7 +3,8 @@ import OrderListItem from './OrderListItem/OrderListItem'
 
 function OrderList() {
     const dispatch = useDispatch();
-    axios.get('/order')
+    useEffect(() => {
+        axios.get('/order')
         .then((response) => {
             console.log('get orders success', response.data);
             dispatch({
@@ -12,6 +13,7 @@ function OrderList() {
             })
         })
         .catch(err => console.log('get orders failed', err));
+    }, [])
 
     const orders = useSelector(store => store.orderList)
 
@@ -27,8 +29,8 @@ function OrderList() {
             </thead>
 
             <tbody>
-               { orders.map(order =>
-                <OrderListItem order={order} />)}
+                {orders.map(order =>
+                    <OrderListItem order={order} key={order.id} />)}
             </tbody>
         </table>
     )
