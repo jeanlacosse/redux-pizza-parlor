@@ -5,9 +5,15 @@ import OrderList from '../OrderList/OrderList'
 
 import PizzaList from '../PizzaList/PizzaList';
 
+
+import PizzaForm from '../PizzaForm/PizzaForm';
+
+
+
 // TODO after lunch
 // import routers stuff, create routes/links, add checkout button to route to the form
 // top right corner total thing
+
 function App() {
 
   return (
@@ -19,6 +25,8 @@ function App() {
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
     <OrderList />
+
+    <PizzaForm />
     </div>
 
   
