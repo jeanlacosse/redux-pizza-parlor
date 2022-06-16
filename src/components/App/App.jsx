@@ -5,6 +5,8 @@ import OrderList from '../OrderList/OrderList'
 
 import PizzaList from '../PizzaList/PizzaList';
 
+import PizzaForm from '../PizzaForm/PizzaForm';
+
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
     <OrderList />
+
+    <PizzaForm />
     </div>
 
   
