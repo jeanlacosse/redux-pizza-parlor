@@ -5,8 +5,14 @@ import OrderList from '../OrderList/OrderList'
 
 import PizzaList from '../PizzaList/PizzaList';
 
+
 import PizzaForm from '../PizzaForm/PizzaForm';
 
+
+
+// TODO after lunch
+// import routers stuff, create routes/links, add checkout button to route to the form
+// top right corner total thing
 
 function App() {
 
