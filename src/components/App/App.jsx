@@ -6,6 +6,7 @@ import OrderList from '../OrderList/OrderList'
 import PizzaList from '../PizzaList/PizzaList';
 
 
+
 function App() {
 
   return (
@@ -18,8 +19,6 @@ function App() {
       <p>Pizza is great.</p>
     <OrderList />
     </div>
-
-  
   );
 }
 
