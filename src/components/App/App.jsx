@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+
 
 import OrderList from '../OrderList/OrderList'
-
 import PizzaList from '../PizzaList/PizzaList';
-
-
 import PizzaForm from '../PizzaForm/PizzaForm';
+// import ConfirmOrder
 
 
 
@@ -17,20 +17,36 @@ import PizzaForm from '../PizzaForm/PizzaForm';
 function App() {
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <h1 className='App-title'>Prime Pizza</h1>
-      </header>
-      <PizzaList />
-      <img src='images/pizza_photo.png' />
-      <p>Pizza is great.</p>
-    <OrderList />
+    <Router>
+      <div className='App'>
+        <header className='App-header'>
+          <h1 className='App-title'>Prime Pizza</h1>
+        </header>
+        <Route path="/" exact>
+        <PizzaList />
+        </Route>
+        <img src='images/pizza_photo.png' />
+        <p>Pizza is great.</p>
+        <Route path="/orderlist" exact>
+        <OrderList />
+        </Route>
 
-    <PizzaForm />
-    </div>
+        {/* need this to be a link to the form page */}
+        <Route path="/form" exact>
+          <PizzaForm />
+        </Route>
+        <Route path="/confirmation" exact>
+          <ConfirmOrder 
+          custToAdd={custToAdd}
+          />
+        </Route>
+      </div>
+    </Router>
 
-  
+
   );
 }
 
 export default App;
+
+
