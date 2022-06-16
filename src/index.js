@@ -24,7 +24,7 @@ const orderList = (state = [], action) => {
 const pizzaList = (state = [], action) => {
     switch (action.type) {
         case 'GET_PIZZA_LIST':
-            return [...state, action.payload]
+            return action.payload
     }
 }
 
