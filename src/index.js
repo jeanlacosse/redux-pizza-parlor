@@ -9,7 +9,10 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 
+// axios.post does not set the reducer
+
 // get _order_list reducer for stephen create
+// this will be in the admin order page
 const orderList = (state = [], action) => {
     switch (action.type) {
         case 'GET_ORDER_LIST':
@@ -17,7 +20,7 @@ const orderList = (state = [], action) => {
     }
 }
 
-
+// this will pop up on the home page as a list of items with buttons on them
 const pizzaList = (state = [], action) => {
     switch (action.type) {
         case 'GET_PIZZA_LIST':
