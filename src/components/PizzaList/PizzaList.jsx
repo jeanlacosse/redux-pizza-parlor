@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PizzaItem from '../PizzaItem/PizzaItem';
+import axios from 'axios';
 
 function PizzaList () {
     const dispatch =  useDispatch();
