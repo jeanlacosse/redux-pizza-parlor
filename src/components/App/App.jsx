@@ -6,8 +6,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import OrderList from '../OrderList/OrderList'
 import PizzaList from '../PizzaList/PizzaList';
 import PizzaForm from '../PizzaForm/PizzaForm';
-// import ConfirmOrder
-
+import ConfirmOrder from '../ConfirmOrders/ConfirmOrders';
 
 
 
@@ -28,11 +27,11 @@ function App() {
         <header className='App-header'>
           <h1 className='App-title'>Prime Pizza</h1>
         </header>
+        <h3>Step 1: Select Your Pizza</h3>
         <Route path="/" exact>
         <PizzaList />
         </Route>
         <img src='images/pizza_photo.png' />
-        <p>Pizza is great.</p>
         <Route path="/orderlist" exact>
         <OrderList />
         </Route>
@@ -43,7 +42,7 @@ function App() {
         </Route>
         <Route path="/confirmation" exact>
           <ConfirmOrder 
-          custToAdd={custToAdd}
+          // custToAdd={custToAdd}
           />
         </Route>
       </div>

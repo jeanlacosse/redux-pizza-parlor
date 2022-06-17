@@ -35,9 +35,19 @@ function PizzaItem({ pizza }) {
 
     return (
         <>
+            <div className='pizzaItem'>
             <div>
-                {pizza.name}: {pizza.description} {pizza.price}
-
+                <img className='pizzaImg' src='images/pizza_photo.png' />
+            </div>
+                <div className='pizzaItemName'>
+                    {pizza.name}
+                </div>
+                <div>
+                    {pizza.description}
+                </div>
+                <div>
+                    {pizza.price}
+                </div>
 
                 {/* conditional redering for buttons */}
                 {showAddBtn ?
