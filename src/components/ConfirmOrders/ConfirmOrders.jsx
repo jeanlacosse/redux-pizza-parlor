@@ -1,9 +1,30 @@
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
-function ConfirmOrder() {
+
+function ConfirmOrder({getPizzas}) {
     const dispatch = useDispatch();
     const pizzaCart = useSelector(store => store.pizzaCart);
-    const addedCustomer = useSelector(store => store.addedCustomer);
+    const addedCustomer = useSelector(store => store.pizzaCart)
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        console.log('checking out pizza', {customer_name, street_address, city, zip, type, total, pizzaCart})
+        axios({
+            method: 'POST',
+            url: '/api/order',
+            data: {customer_name, street_address, city, zip, type, total, pizzaCart}
+        })
+        .then(() => {
+            console.log('POST /orders')
+
+            getPizzas();
+        })
+        .catch((error)=> {
+            console.log('POST error', error);
+        });
+    }
+
     return (
         <>
 
@@ -50,10 +71,12 @@ function ConfirmOrder() {
                         })}
                     </tbody>
                 </table>
-
-                <button type="checkout">
+                
+            <div>
+                <button onClick={() => handleSubmit()}>
                     Checkout
                 </button>
+            </div>    
                 
             </>
             )  
