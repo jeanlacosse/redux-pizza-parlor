@@ -1,4 +1,4 @@
-import {useEffect} from 'react'    
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import OrderListItem from '../OrderListItem/OrderListItem'
 import axios from 'axios'
@@ -6,16 +6,20 @@ import axios from 'axios'
 function OrderList() {
     const dispatch = useDispatch();
     useEffect(() => {
-        axios.get('/api/order')
-        .then((response) => {
-            console.log('get orders success', response.data);
-            dispatch({
-                type: 'GET_ORDER_LIST',
-                payload: response.data
-            })
-        })
-        .catch(err => console.log('get orders failed', err));
+        fetchOrders()
     }, [])
+
+    function fetchOrders() {
+        axios.get('/api/order')
+            .then((response) => {
+                console.log('get orders success', response.data);
+                dispatch({
+                    type: 'GET_ORDER_LIST',
+                    payload: response.data
+                })
+            })
+            .catch(err => console.log('get orders failed', err));
+    }
 
     const orders = useSelector(store => store.orderList)
 
@@ -32,7 +36,7 @@ function OrderList() {
 
             <tbody>
                 {orders.map(order =>
-                    <OrderListItem order={order} key={order.id} />)}
+                    <OrderListItem order={order} key={order.id} fetchOrders={fetchOrders}  />)}
             </tbody>
         </table>
     )
