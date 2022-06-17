@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 function PizzaForm({ }) {
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   let [custToAdd, setCustToAdd] = useState({ name: '', address: '', city: '', zip: '', type: '' });
 
@@ -56,7 +58,14 @@ function PizzaForm({ }) {
   const addCustInfo = (evt) => {
     evt.preventDefault();
     // onclick link to checkout page with the props of the cust info
-    // send to history of the url where it
+    // send to history of the url where it belongs
+
+    dispatch({
+      type: 'ADD_NEW_CUSTOMER',
+      payload: custToAdd
+    })
+
+    // need to dispatch custToAdd to store, where it is imported by confirmation page
     history.push('/confirmation');
 
   };
