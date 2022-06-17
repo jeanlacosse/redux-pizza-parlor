@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import PizzaItem from '../PizzaItem/PizzaItem';
 import axios from 'axios';
@@ -9,6 +10,12 @@ function PizzaList () {
     useEffect(()=> {
         getPizzas();
     }, [])
+
+    const history = useHistory();
+
+    const sendToForm = () => {
+        history.push('/form')
+    }
 
     const getPizzas = () => {
         axios({
@@ -33,6 +40,8 @@ function PizzaList () {
             <PizzaItem key={pizza.id} pizza={pizza}
         /> 
         )} 
+
+        <button onClick={sendToForm}>Next</button>
         </div>
        
     )
