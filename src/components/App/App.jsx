@@ -40,9 +40,6 @@ function App() {
         </Route>
 
         <img src='images/pizza_photo.png' />
-        <Link to="/form">
-        Next
-        </Link>
       </div>
     </Router>
 
