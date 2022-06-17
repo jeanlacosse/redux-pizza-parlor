@@ -30,10 +30,34 @@ const pizzaList = (state = [], action) => {
     return state;
 }
 
+const pizzaCart = (state = [], action) => {
+    switch (action.type) {
+        case 'ADD_PIZZA_CART':
+            return [...state, action.payload]
+        case 'DELETE_PIZZA_CART':
+            return (
+                // this will filter over array. If false it will keep item, if true it will delete item from array.
+            state.filter(item => 
+                item.name !== action.payload.name 
+                ))
+    }
+    return state;
+}
+
+const addedCustomer = (state = [], action) => {
+    switch (action.type) {
+        case 'ADD_NEW_CUSTOMER':
+            return action.payload
+    }
+    return state;
+}
+
 const storeInstance = createStore(
     combineReducers({
        pizzaList,
-       orderList
+       orderList,
+       pizzaCart,
+       addedCustomer
     }),
     applyMiddleware(logger)
 );
