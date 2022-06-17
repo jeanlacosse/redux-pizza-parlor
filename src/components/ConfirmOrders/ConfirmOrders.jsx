@@ -1,8 +1,30 @@
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
-function ConfirmOrder({ custToAdd }) {
+
+function ConfirmOrder({getPizzas}) {
     const dispatch = useDispatch();
     const pizzaCart = useSelector(store => store.pizzaCart);
+    const addedCustomer = useSelector(store => store.pizzaCart)
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        console.log('checking out pizza', {customer_name, street_address, city, zip, type, total, pizzaCart})
+        axios({
+            method: 'POST',
+            url: '/api/order',
+            data: {customer_name, street_address, city, zip, type, total, pizzaCart}
+        })
+        .then(() => {
+            console.log('POST /orders')
+
+            getPizzas();
+        })
+        .catch((error)=> {
+            console.log('POST error', error);
+        });
+    }
+
     return (
         <>
 
@@ -12,21 +34,21 @@ function ConfirmOrder({ custToAdd }) {
 
                 <ul>
                     <li>
-                        {custToAdd.name}
+                        {addedCustomer.name}
                     </li>
                     <li>
-                        {custToAdd.address}
+                        {addedCustomer.address}
                     </li>
                     <li>
-                        {custToAdd.city}
+                        {addedCustomer.city}
                     </li>
                     <li>
-                        {custToAdd.zip}
+                        {addedCustomer.zip}
                     </li>
                 </ul>
 
                 <div>
-                    <h2>For {custToAdd.type}</h2>
+                    <h2>For {addedCustomer.type}</h2>
 
                 </div>
 
@@ -49,10 +71,12 @@ function ConfirmOrder({ custToAdd }) {
                         })}
                     </tbody>
                 </table>
-
-                <button type="checkout">
+                
+            <div>
+                <button onClick={() => handleSubmit()}>
                     Checkout
                 </button>
+            </div>    
                 
             </>
             )  
