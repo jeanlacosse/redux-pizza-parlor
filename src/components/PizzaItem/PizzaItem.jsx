@@ -38,10 +38,6 @@ function PizzaItem({ pizza }) {
             <div>
                 {pizza.name}: {pizza.description} {pizza.price}
 
-                
-
-
-
 
                 {/* conditional redering for buttons */}
                 {showAddBtn ?
@@ -49,9 +45,6 @@ function PizzaItem({ pizza }) {
                     :
                     <button onClick={removePizzaToCart}>Remove</button>
                 }
-
-
-
 
             </div>
         </>
