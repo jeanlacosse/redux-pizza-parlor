@@ -1,9 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory, Link } from 'react-router-dom';
+
 import axios from 'axios';
 
 
 function ConfirmOrder({ getPizzas }) {
     const dispatch = useDispatch();
+    const history = useHistory()
     const pizzaCart = useSelector(store => store.pizzaCart);
     const addedCustomer = useSelector(store => store.addedCustomer)
 
@@ -11,13 +14,17 @@ function ConfirmOrder({ getPizzas }) {
 
     let total = 0;
     for (let pizza of pizzaCart) {
-        total += pizza.price;
+        total += Number(pizza.price);
         pizzas.push({
             id: pizza.id, 
             quantity: '1'
         })
     }
     
+    const backToHome = () => {
+        handleSubmit();
+        history.push('/')
+    }
 
     const handleSubmit = () => {
         // event.preventDefault();
@@ -47,7 +54,7 @@ function ConfirmOrder({ getPizzas }) {
             .then(() => {
                 console.log('POST /orders')
 
-                // getPizzas();
+                
             })
             .catch((error) => {
                 console.log('POST error', error);
@@ -101,7 +108,7 @@ function ConfirmOrder({ getPizzas }) {
             </table>
 
             <div>
-                <button onClick={handleSubmit}>
+                <button onClick={backToHome}>
                     Checkout
                 </button>
             </div>
