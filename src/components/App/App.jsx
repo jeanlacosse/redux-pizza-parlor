@@ -27,7 +27,6 @@ function App() {
         <Route path="/" exact>
         <PizzaList />
         </Route>
-        <img src='images/pizza_photo.png' />
 
         <Route path="/orderlist" exact>
         <OrderList />
@@ -44,7 +43,6 @@ function App() {
 
           />
         </Route>
-
         <img src='images/pizza_photo.png' />
       </div>
     </Router>

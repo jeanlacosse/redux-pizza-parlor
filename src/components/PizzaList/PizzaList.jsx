@@ -41,7 +41,7 @@ function PizzaList () {
         /> 
         )} 
 
-        <button onClick={sendToForm}>Next</button>
+        <button className='pizzaNextBtn' onClick={sendToForm}>Next</button>
         </div>
        
     )
