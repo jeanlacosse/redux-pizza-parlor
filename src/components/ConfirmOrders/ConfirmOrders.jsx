@@ -7,9 +7,15 @@ function ConfirmOrder({ getPizzas }) {
     const pizzaCart = useSelector(store => store.pizzaCart);
     const addedCustomer = useSelector(store => store.addedCustomer)
 
+    let pizzas = [];
+
     let total = 0;
     for (let pizza of pizzaCart) {
         total += pizza.price;
+        pizzas.push({
+            id: pizza.id, 
+            quantity: '1'
+        })
     }
     
 
@@ -22,7 +28,7 @@ function ConfirmOrder({ getPizzas }) {
             zip: addedCustomer.zip,
             type: addedCustomer.type,
             total: total,
-            pizzas: pizzaCart
+            pizzas: pizzas
         })
         let fullOrderData = {
             customer_name: addedCustomer.name,
@@ -31,7 +37,7 @@ function ConfirmOrder({ getPizzas }) {
             zip: addedCustomer.zip,
             type: addedCustomer.type,
             total: total,
-            pizzas: pizzaCart
+            pizzas: pizzas
         }
         axios({
             method: 'POST',
